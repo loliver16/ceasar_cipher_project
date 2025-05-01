@@ -19,12 +19,14 @@ def main():
     if len(sys.argv) < 2:
         print("Usage: python script.py <shift>")
         return
-    shift = int(sys.argv[1])
+    try:
+        shift = int(sys.argv[1])
+    except ValueError:
+        print("Error: The shift value must be an integer.")
+        return
 
     # Read input message
-    input_text = ""
-    for line in sys.stdin:
-        input_text += line
+    input_text = sys.stdin.read()
 
     # Encrypt message
     encrypted = caesar_cipher(input_text, shift)
