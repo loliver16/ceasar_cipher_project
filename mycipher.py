@@ -1,5 +1,13 @@
 import sys
 
+"""
+Applies caesar cipher to inputed text using given shift. First converts
+text to uppercase then adds shifts. 
+
+Parameters:
+text - text to be coded
+shift - number of characters in alphabet to shift each letter
+"""
 def caesar_cipher(text, shift):
     result = ""
     for char in text.upper():
@@ -8,6 +16,12 @@ def caesar_cipher(text, shift):
             result += chr(shifted + ord('A'))
     return result
 
+"""
+Prints ciphered text in blocks of 5 letters, with 10 blocks per line. 
+
+Parameters:
+cipher_text - ciphered text to be printed
+"""
 def print_blocks(cipher_text):
     # Split into blocks of 5 letters
     blocks = [cipher_text[i:i+5] for i in range(0, len(cipher_text), 5)]
@@ -15,6 +29,10 @@ def print_blocks(cipher_text):
     for i in range(0, len(blocks), 10):
         print(" ".join(blocks[i:i+10]))
 
+"""
+Runs caesar cipher by reading stdin, calling previous functions, 
+and printing the resulting ciphered message. 
+"""
 def main():
     if len(sys.argv) < 2:
         print("Usage: python script.py <shift>")
